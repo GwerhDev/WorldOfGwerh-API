@@ -1,7 +1,8 @@
 const router = require('express').Router();
-const adventures = require('../models/adventures.json');
+const adventureSchema = require('../models/Adventure');
 
-router.get("/", (req, res) => {
+router.get("/", async(req, res) => {
+  const adventures = await adventureSchema.find();
   return res.status(200).json(adventures);
 })
 

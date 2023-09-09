@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const tales = require('../models/tales.json');
+const taleSchema = require('../models/Tale');
 
-router.get("/", (req, res) => {
-  return res.status(200).json(tales)
+router.get("/", async(req, res) => {
+  const tales = await taleSchema.find();
+  return res.status(200).json(tales);
 })
 
 module.exports = router;

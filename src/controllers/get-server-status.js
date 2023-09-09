@@ -1,9 +1,8 @@
+const router = require('express').Router();
 const { message } = require('../messages');
 
-const router = require('express').Router();
-
 router.get('/', (req,res) => { 
-  res.status(200).send({ status: true, message: message.server.connectingServer })
+  return res.status(200).send({ status: true, message: message.server.connectingServer });
 });
 
 module.exports = router;

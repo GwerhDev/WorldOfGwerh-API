@@ -7,7 +7,7 @@ const session = require("express-session");
 
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const { PRIVATE_SECRET } = require("./config/config");
+const { PRIVATE_SECRET } = require("./config");
 
 server.use((req, res, next) => {
   console.log('request from:', req.headers.origin);

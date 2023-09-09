@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { MONGODB_URI } = require("../config/config");
+const { MONGODB_URI } = require("../config");
 
 module.exports = class DB {
   static connect() {
