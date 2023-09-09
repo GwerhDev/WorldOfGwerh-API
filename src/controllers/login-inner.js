@@ -8,23 +8,23 @@ router.post('/', async(req,res) => {
   try {
     const { username, password } = req.body;
     const user = await userSchema.findOne({ username });
-    if(!user) return res.status(400).send({error: message.login.failure});
+    if(!user) return res.status(400).send({ logged: false, message: message.login.failure });
 
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if(passwordMatch) {
-      const { _id, username, email, status, role } = user;
-      const data = { _id: _id.toString(), username, email, status, role };
+      const { _id } = user;
+      const data = { _id: _id.toString() };
       const token = await createToken(data, 3);
       
-      return res.status(200).send({ token });
+      return res.status(200).send({ logged: true, token, message: message.login.success });
 
     } else {
-      return res.status(400).send({ error: message.login.error });
+      return res.status(400).send({ logged: false, message: message.login.error });
     };
     
   } catch(error) {
-    return res.status(400).send({ error: message.login.error });
+    return res.status(400).send({ logged: false, message: message.login.error });
   }
 });
 

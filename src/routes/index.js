@@ -3,6 +3,7 @@ const getAdventures = require('../controllers/get-adventures');
 const getTales = require('../controllers/get-tales');
 const getServerStatus = require('../controllers/get-server-status');
 
+const auth = require('../controllers/auth');
 const innerLogin = require('../controllers/login-inner');
 const innerSignup = require('../controllers/signup-inner');
 
@@ -12,6 +13,7 @@ router.use("/", getServerStatus);
 router.use("/get-adventures", getAdventures);
 router.use("/get-tales", getTales);
 
+router.use("/auth", auth)
 router.use("/inner-login", innerLogin);
 router.use("/inner-signup", innerSignup);
 
