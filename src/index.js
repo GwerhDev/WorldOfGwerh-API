@@ -1,7 +1,7 @@
 require("dotenv").config();
-const { PORT } = require("./config");
 const server = require("./app");
-const db = require("./integrations/mongodb")
+const { PORT } = require("./config");
+const db = require("./integrations/mongodb");
 
 async function main() {
   db.connect()
